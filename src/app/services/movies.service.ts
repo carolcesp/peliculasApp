@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { ResponseMovies } from '../interfaces/interfaces';
+import { ResponseMovies, DetailMovie, ResponseCredits } from '../interfaces/interfaces';
 
 const URL = environment.url;
 const apiKey = environment.apiKey;
@@ -11,6 +11,8 @@ const apiKey = environment.apiKey;
 })
 
 export class MoviesService {
+
+  private popularPage = 0;
 
   constructor( private http: HttpClient) { }
 
@@ -42,9 +44,19 @@ export class MoviesService {
   }
 
   getPopularMovies() {
-    const query = '/discover/movie?sort_by=popularity.desc';
+    this.popularPage++;
+
+    const query = `/discover/movie?sort_by=popularity.desc%page=${this.popularPage}`;
 
     return this.getQuery<ResponseMovies>(query);
+  }
+
+  getDetailMovie(id) {
+    return this.getQuery<DetailMovie>(`/movie/${ id }?a=1`);
+  }
+
+  getActors(id) {
+    return this.getQuery<ResponseCredits>(`/movie/${ id }/credits?a=1`);
   }
 
 

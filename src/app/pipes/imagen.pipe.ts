@@ -13,11 +13,11 @@ export class ImagenPipe implements PipeTransform {
 
     if(!img) {
       return './assets/no-image-banner.j';
+
+    } else {
+      const imgUrl = `${ URL }/${ size }${ img }`;
+      return imgUrl;
     }
-
-    const imgUrl = `${ URL }/${ size }${ img }`;
-
-    return imgUrl;
   }
 
 }
