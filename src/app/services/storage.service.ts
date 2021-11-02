@@ -18,7 +18,6 @@ export class StorageService {
   }
 
   async init() {
-    // If using, define drivers here: await this.storage.defineDriver(/*...*/);
     const storage = await this.storage.create();
     this.storage = storage;
   }
@@ -72,6 +71,5 @@ export class StorageService {
 
     return (existe) ? true : false
   }
-
 
 }
