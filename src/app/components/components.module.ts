@@ -17,7 +17,7 @@ import { DetalleComponent } from './detalle/detalle.component';
     SlideshowBackdropComponent,
     SlideshowPosterComponent,
     SlidershowParesComponent,
-    DetalleComponent
+    DetalleComponent,
   ],
   imports: [
     CommonModule,
